@@ -1,5 +1,5 @@
 Package: StabilityToolkit
-Title: What the Package Does (One Line, Title Case)
+Title: Statistical inference for bacterial stability assays
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Jose Miguel",
@@ -11,7 +11,21 @@ Authors@R:
            role = c("cre"),
            email = "javirudolph@outlook.com",
            comment = c(ORCID = "https://orcid.org/0000-0002-7124-4649")))
-Description: R toolkit to fit the plasmid-bacteria model used by E.M Top's lab and publications
+Description: This package contains functions to estimate plasmid cost,
+    segregation rate and horizontal transfer rates from stability assays data. The
+    stability asays follow periodically (usually every 24 hours) the changes in the
+    fraction of plasmid free cells in serial passage cultures. At the end of each
+    cycle, the experimenter takes a sample of the liquid culture and plates it after
+    dilution. Using an antibiotic marker present in the plasmid, the experimenter
+    can count, out of a total number of colonies plated, how many of these are
+    plasmid-carrying. Here, we provide an array of statistical and mathematical
+    functions to estimate the parameters of a series of dynamic models consisting
+    of a pair of difference equations that follow the abundance of plasmid-free and
+    plasmid-carrying cells under various biological hypotheses. The package also
+    includes functions to simulate data under each model. Estimation is done via
+    Maximum Likelihood. Hierarchical stochastic models are also considered. Further
+    information can be found in the author papers made in collaboration with Eva
+    Top, see: http://people.clas.ufl.edu/josemi/papers/
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
