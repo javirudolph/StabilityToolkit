@@ -2,10 +2,15 @@ Package: StabilityToolkit
 Title: Statistical inference for bacterial stability assays
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Jose Miguel",
+    c(person(given = "Jose Miguel",
            family = "Ponciano",
            role = c("aut", "cre"),
-           email = "josemi@ufl.edu")
+           email = "josemi@ufl.edu"),
+      person(given = "Javiera",
+           family = "Rudolph",
+           role = c("aut"),
+           email = "javirudolph@outlook.com",
+           comment = c(ORCID = "0000-0002-7124-4649")))
 Description: This package contains functions to estimate plasmid cost,
     segregation rate and horizontal transfer rates from stability assays data. The
     stability asays follow periodically (usually every 24 hours) the changes in the
