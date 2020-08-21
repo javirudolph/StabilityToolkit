@@ -33,5 +33,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Jose Miguel Ponciano \email{josemi@ufl.edu}
 
+Other contributors:
+\itemize{
+  \item Javiera Rudolph \email{javirudolph@outlook.com} (\href{https://orcid.org/0000-0002-7124-4649}{ORCID}) [contributor]
+}
+
 }
 \keyword{internal}

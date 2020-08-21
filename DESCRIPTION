@@ -8,7 +8,7 @@ Authors@R:
            email = "josemi@ufl.edu"),
       person(given = "Javiera",
            family = "Rudolph",
-           role = c("aut"),
+           role = c("ctb"),
            email = "javirudolph@outlook.com",
            comment = c(ORCID = "0000-0002-7124-4649")))
 Description: This package contains functions to estimate plasmid cost,
