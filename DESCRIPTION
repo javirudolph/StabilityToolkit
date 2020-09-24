@@ -35,4 +35,5 @@ URL: https://github.com/javirudolph/StabilityToolkit
 BugReports: https://github.com/javirudolph/StabilityToolkit/issues
 Imports: 
     MASS,
-    numDeriv
+    numDeriv,
+    extraDistr
