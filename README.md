@@ -60,3 +60,73 @@ plug-and-play tool. Even if you don’t fully understand all of the
 statistical details, you won’t regret spending time on these papers. It
 is my hope that after reading these you will have what you need to
 de-bug your analyses.
+
+## A brief description of what this package can do
+
+Suppose we want to &#12;t the segregation-selection (SS) model to
+estimate the plasmid cost and the segregation rate, along with the
+initial fraction of segregants. Given your data object name is
+`trial.data`, you can do this with a single line of code:
+
+``` r
+simpleSSfit <- dynamic.fit(data1 = trial.data, model = "SS")
+```
+
+If you want to fit the Horizontal Transfer model, simply do:
+
+``` r
+simpleHTfit <- dynamic.fit(data1=trial.data, model = "HT")
+```
+
+Now, various types of biological complexities can be added to the bare
+bones model. For example, if you want to fit the SS model but you would
+like to assume that the cost parameter is negative and therefore, that
+carrying the plasmid is actually a benefit, then you can do that simply
+by modifying the default `true.cost` argument like this:
+
+``` r
+simpleSSfit <- dynamic.fit(data1=trial.data,model="SS", true.cost=FALSE)
+```
+
+Here’s another type of practical thing you may want to do. Suppose you
+have two data sets coming from two distinct stability assays, and want
+to test if they are driven by the same biological parameters (same cost,
+segregation rate and if horizontal transfer is present, same transfer
+probability). Suppose that your second data set object name is
+`trial.data2`. If you want to do this test with the SS model, just
+write:
+
+``` r
+comb.SSfit <- dynamic.fit(data1=trial.data,model="SS", comb=TRUE,data2=trial.data2)
+```
+
+and if you want to test this idea with the Horizontal Transfer (HT)
+model, just type
+
+``` r
+comb.HTfit <- dynamic.fit(data1=trial.data,model="HT", comb=TRUE,data2=trial.data2)
+```
+
+Finally, here’s something else you may want to do. Assume you have data
+from a competition assay and from a stability assay and you want to
+leverage the information in the competition assay to better estimate the
+cost. This package comes with two sample data sets to that effect, one
+is a stability assay, called `data.compet` and another called
+`data.stabexp`. These two data sets come from an ancestral line, so cost
+is expected to be true cost. You can check out these two data sets by
+loading them:
+
+``` r
+data(data.compet)
+data.compet
+
+data(data.stabexp)
+data.stabexp
+```
+
+Then, to jointly estimate the SS model parameters by using data from the
+competition and from the stability assay, just type
+
+``` r
+add.compet.fit <- dynamic.fit(data1=data.stabexp,model="SS",add.compet.data=TRUE, data2=data.compet)
+```
