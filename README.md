@@ -63,10 +63,10 @@ de-bug your analyses.
 
 ## A brief description of what this package can do
 
-Suppose we want to &#12;t the segregation-selection (SS) model to
-estimate the plasmid cost and the segregation rate, along with the
-initial fraction of segregants. Given your data object name is
-`trial.data`, you can do this with a single line of code:
+Suppose we want to fit the segregation-selection (SS) model to estimate
+the plasmid cost and the segregation rate, along with the initial
+fraction of segregants. Given your data object name is `trial.data`, you
+can do this with a single line of code:
 
 ``` r
 simpleSSfit <- dynamic.fit(data1 = trial.data, model = "SS")

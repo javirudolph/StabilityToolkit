@@ -47,7 +47,7 @@ package. Reading those papers is a pre-requisite to use this package smartly, an
 
 ## A brief description of what this package can do
 
-Suppose we want to t the segregation-selection (SS) model to estimate the
+Suppose we want to fit the segregation-selection (SS) model to estimate the
 plasmid cost and the segregation rate, along with the initial fraction of segregants. Given
 your data object name is `trial.data`, you can do this with a single line of code:
 
