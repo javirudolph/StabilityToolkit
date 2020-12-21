@@ -14,27 +14,91 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Preamble
+# Installing and using the package.  
+# The following three lines only need to be ran only once!
 
-If you have questions and run into problems, please e-mail me at josemi@ufl.edu. Mathematics and statistics are fantastic tools to translate fundamental questions in biology into testable predictions. It's the best mechanism that we have in science to formulate relevant biological
-questions in a way that these can be directly confronted with the data sets at hand. If you have multiple tentative explanations for your results and you speak even just a little of the language of math, you have what you need to translate those tentative explanations into
-statistical hypotheses that can all be simultaneously tested against your data. So if you want to make the most of this package, you should familiarize yourself with the models in the [Top lab](http://www.thetoplab.org/). A lot of time and effort went into writing the models in a way that they are easily understood. A great place to start is the paper by [De Gelder et al 2004](https://www.genetics.org/content/168/3/1131) and the model
-section of the paper by [Ponciano et al 2007](https://doi.org/10.1534/genetics.106.061937). There you will find all the models used in this
-package. Reading those papers is a pre-requisite to use this package smartly, and not just as a plug-and-play tool. Even if you don't fully understand all of the statistical details, you won't regret spending time on these papers. It is my hope that after reading these you will have what you need to de-bug your analyses. 
-
-## Installation
-
-You can install this version from [GitHub](https://github.com/) with:
-
-``` {r eval=FALSE}
-# If you have not used the `devtools` package before, you can install it following the `install.packages` function
-
+```{r eval=FALSE}
 install.packages("devtools")
+library("devtools")
 
 devtools::install_github("javirudolph/StabilityToolkit")
-``` 
+```
 
-```{r setup}
+Now that the package is installed in your computer, you can load it to your R session:
+```{r}
 library(StabilityToolkit)
 ```
+
+```{r eval=FALSE}
+# Check the help file
+help(package="StabilityToolkit")
+```
+
+For this short example, we will use the `G1000` data set, which is included in the package.
+```{r}
+# You can load the data:
+data("G1000")
+
+# We will call the data `trial.data` for this example
+trial.data <-G1000
+print(trial.data)
+```
+
+ Now fitting the segregation-selection (SS) model to this trial data set
+```{r}
+simpleSSfit <- dynamic.fit(data1=trial.data,model="SS")
+```
+
+
+Try fitting the HT model
+```{r}
+simpleHTfit <- dynamic.fit(data1=trial.data,model="HT")
+```
+
+
+Adding complexity: 
+1. Assume the cost parameter is negative: i.e., bacteria with plasmid grows faster.  Just add
+```{r}
+simpleSSfit <- dynamic.fit(data1=trial.data,model="SS", true.cost=FALSE)
+```
+
+2. Assume you have two stability assay data sets and want to test if they are driven by the same biological parameters.  We can do that for the SS and for the HT models
+
+```{r}
+trial.data2 <- trial.data # just use the same data as your second data set, for the sake of this example
+
+comb.SSfit <- dynamic.fit(data1=trial.data,model="SS", comb=TRUE,data2=trial.data2)
+
+comb.HTfit <- dynamic.fit(data1=trial.data,model="HT", comb=TRUE,data2=trial.data2)
+```
+
+
+### We can also do this using two other data sets included in the package:
+
+```{r}
+trial.data <- data("L1I1HancPac")
+trial.data2 <- data("L1I1HancPev")
+```
+
+```{r}
+comb.SSfit <- dynamic.fit(data1=trial.data,model="SS", comb=TRUE,data2=trial.data2)
+
+comb.HTfit <- dynamic.fit(data1=trial.data,model="HT", comb=TRUE,data2=trial.data2)
+```
+
+
+
+3. Assume you have data from a competition assay and from a stability assay and you want to leverage the information in the competition assay to better estimate the cost.  This package comes with two sample data sets to that effect, one is a stability assay, called data.compet and another called data.stabexp. These two data sets come from an Ancestral line, so cost is expected to be true cost. Check them out by typing:
+```{r}
+data("data.compet")
+data.compet
+
+data("data.stabexp")
+data.stabexp
+```
+
+```{r}
+add.compet.fit <- dynamic.fit(data1=data.stabexp,model="SS",add.compet.data=TRUE, data2=data.compet)
+```
+
 
