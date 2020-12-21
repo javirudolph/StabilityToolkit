@@ -1,5 +1,5 @@
 
-#' Title
+#' Log likelihood for beta binomial model
 #'
 #' @param guess
 #' @param datamat
@@ -35,7 +35,7 @@ negll.bblogist<- function(guess, datamat,nreps=3){
   return(negll)
 }
 
-#' Title
+#' Simulates data picking from a beta binomial
 #'
 #' @param mles
 #' @param days
@@ -64,7 +64,7 @@ bblogist.sim <- function(mles, days, Dmat){
 }
 
 
-#' Title
+#' Comparisson between fits
 #'
 #' @param datamatAnc
 #' @param datamatEv
