@@ -2,7 +2,7 @@
 % Please edit documentation in R/CompareTools.R
 \name{negll.bblogist}
 \alias{negll.bblogist}
-\title{Title}
+\title{Log likelihood for beta binomial model}
 \usage{
 negll.bblogist(guess, datamat, nreps = 3)
 }
@@ -13,7 +13,7 @@ negll.bblogist(guess, datamat, nreps = 3)
 
 }
 \description{
-Title
+Log likelihood for beta binomial model
 }
 \examples{
 

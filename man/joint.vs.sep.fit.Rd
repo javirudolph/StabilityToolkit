@@ -2,7 +2,7 @@
 % Please edit documentation in R/CompareTools.R
 \name{joint.vs.sep.fit}
 \alias{joint.vs.sep.fit}
-\title{Title}
+\title{Comparisson between fits}
 \usage{
 joint.vs.sep.fit(
   datamatAnc,
@@ -22,5 +22,5 @@ joint.vs.sep.fit(
 
 }
 \description{
-Title
+Comparisson between fits
 }

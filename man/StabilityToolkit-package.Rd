@@ -35,7 +35,7 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Javiera Rudolph \email{javirudolph@outlook.com} (\href{https://orcid.org/0000-0002-7124-4649}{ORCID}) [contributor]
+  \item Francisca Javiera Rudolph \email{javirudolph@outlook.com} (\href{https://orcid.org/0000-0002-7124-4649}{ORCID}) [contributor]
 }
 
 }

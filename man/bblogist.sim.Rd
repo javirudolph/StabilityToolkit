@@ -2,7 +2,7 @@
 % Please edit documentation in R/CompareTools.R
 \name{bblogist.sim}
 \alias{bblogist.sim}
-\title{Title}
+\title{Simulates data picking from a beta binomial}
 \usage{
 bblogist.sim(mles, days, Dmat)
 }
@@ -13,5 +13,5 @@ bblogist.sim(mles, days, Dmat)
 
 }
 \description{
-Title
+Simulates data picking from a beta binomial
 }
