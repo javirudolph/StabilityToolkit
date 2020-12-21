@@ -37,3 +37,7 @@ Imports:
     MASS,
     numDeriv,
     extraDistr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
