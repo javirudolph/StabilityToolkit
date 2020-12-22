@@ -1,17 +1,23 @@
 #' Data simulation under the variable selection model
 #'
-#' @param lam
-#' @param mu
-#' @param tausq
-#' @param days
-#' @param x0
-#' @param gen
-#' @param Dmat
+#' @param lam lambda parameter in the model
+#' @param mu mu parameter in the model
+#' @param tausq tau square parameter
+#' @param days number of days
+#' @param x0 day zero
+#' @param gen number of generations per day
+#' @param Dmat starting point
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#'
+#' ndays <-22
+#' days.vec <- 0:(ndays-1)
+#' nreps <- 3
+#' D <- matrix(50, ncol=nreps, nrow=ndays)
+#' varselsim <- vs.sim(lam=0.001533, mu=0.011666, tausq=0.158333, days=days.vec, x0 = 0.0066, gen=10, Dmat=D)
 #'
 #'
 vs.sim <- function(lam=0.001533, mu=0.011666, tausq=0.158333,
