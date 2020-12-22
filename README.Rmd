@@ -78,16 +78,16 @@ comb.HTfit <- dynamic.fit(data1=trial.data,model="HT", comb=TRUE,data2=trial.dat
 Finally, here's something else you may want to do. Assume you have data from a competition assay and from a stability assay and you want to leverage the information in the competition assay to better estimate the cost.  This package comes with two sample data sets to that effect, one is a stability assay, called `data.compet` and another called `data.stabexp`. These two data sets come from an ancestral line, so cost is expected to be true cost.  You can check out these two data sets by loading them:
 
 ```{r eval=FALSE}
-data(data.compet)
-data.compet
+data(compet)
+compet
 
-data(data.stabexp)
-data.stabexp
+data(stabexp)
+stabexp
 ```
 
 Then, to jointly estimate the SS model parameters by using data from the competition and from the stability assay, just type
 ```{r eval=FALSE}
-add.compet.fit <- dynamic.fit(data1=data.stabexp,model="SS",add.compet.data=TRUE, data2=data.compet)
+add.compet.fit <- dynamic.fit(data1=stabexp,model="SS",add.compet.data=TRUE, data2=compet)
 ```
 
 

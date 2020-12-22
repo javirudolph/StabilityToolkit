@@ -117,16 +117,16 @@ is expected to be true cost. You can check out these two data sets by
 loading them:
 
 ``` r
-data(data.compet)
-data.compet
+data(compet)
+compet
 
-data(data.stabexp)
-data.stabexp
+data(stabexp)
+stabexp
 ```
 
 Then, to jointly estimate the SS model parameters by using data from the
 competition and from the stability assay, just type
 
 ``` r
-add.compet.fit <- dynamic.fit(data1=data.stabexp,model="SS",add.compet.data=TRUE, data2=data.compet)
+add.compet.fit <- dynamic.fit(data1=stabexp,model="SS",add.compet.data=TRUE, data2=compet)
 ```
