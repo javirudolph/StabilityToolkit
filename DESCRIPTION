@@ -36,7 +36,8 @@ BugReports: https://github.com/javirudolph/StabilityToolkit/issues
 Imports: 
     MASS,
     numDeriv,
-    extraDistr
+    extraDistr,
+    rjags
 Suggests: 
     knitr,
     rmarkdown
