@@ -89,21 +89,67 @@
 
     
     
-<div id="preamble" class="section level2">
-<h2 class="hasAnchor">
-<a href="#preamble" class="anchor"></a>Preamble</h2>
-<p>If you have questions and run into problems, please e-mail me at <a href="mailto:josemi@ufl.edu" class="email">josemi@ufl.edu</a>. Mathematics and statistics are fantastic tools to translate fundamental questions in biology into testable predictions. It’s the best mechanism that we have in science to formulate relevant biological questions in a way that these can be directly confronted with the data sets at hand. If you have multiple tentative explanations for your results and you speak even just a little of the language of math, you have what you need to translate those tentative explanations into statistical hypotheses that can all be simultaneously tested against your data. So if you want to make the most of this package, you should familiarize yourself with the models in the <a href="http://www.thetoplab.org/">Top lab</a>. A lot of time and effort went into writing the models in a way that they are easily understood. A great place to start is the paper by <a href="https://www.genetics.org/content/168/3/1131">De Gelder et al 2004</a> and the model section of the paper by <a href="https://doi.org/10.1534/genetics.106.061937">Ponciano et al 2007</a>. There you will find all the models used in this package. Reading those papers is a pre-requisite to use this package smartly, and not just as a plug-and-play tool. Even if you don’t fully understand all of the statistical details, you won’t regret spending time on these papers. It is my hope that after reading these you will have what you need to de-bug your analyses.</p>
+<div id="installing-and-using-the-package-" class="section level1">
+<h1 class="hasAnchor">
+<a href="#installing-and-using-the-package-" class="anchor"></a>Installing and using the package.</h1>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install this version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># If you have not used the `devtools` package before, you can install it following the `install.packages` function</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
+<div id="the-following-three-lines-only-need-to-be-ran-only-once" class="section level1">
+<h1 class="hasAnchor">
+<a href="#the-following-three-lines-only-need-to-be-ran-only-once" class="anchor"></a>The following three lines only need to be ran only once!</h1>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"devtools"</span>)
 
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"javirudolph/StabilityToolkit"</span>)</pre></body></html></div>
+<p>Now that the package is installed in your computer, you can load it to your R session:</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">StabilityToolkit</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Check the help file</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span>(<span class="kw">package</span><span class="kw">=</span><span class="st">"StabilityToolkit"</span>)</pre></body></html></div>
+<p>For this short example, we will use the <code>G1000</code> data set, which is included in the package.</p>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># You can load the data:</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"G1000"</span>)
+
+<span class="co"># We will call the data `trial.data` for this example</span>
+<span class="no">trial.data</span> <span class="kw">&lt;-</span><span class="no">G1000</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">trial.data</span>)</pre></body></html></div>
+<p>Now fitting the segregation-selection (SS) model to this trial data set</p>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">simpleSSfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">simpleSSfit</span>)</pre></body></html></div>
+<p>Try fitting the HT model</p>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">simpleHTfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"HT"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">simpleHTfit</span>)</pre></body></html></div>
+<p>Adding complexity: 1. Assume the cost parameter is negative: i.e., bacteria with plasmid grows faster. Just add</p>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">simpleSSfit2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>, <span class="kw">true.cost</span><span class="kw">=</span><span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">simpleSSfit2</span>)</pre></body></html></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Assume you have two stability assay data sets and want to test if they are driven by the same biological parameters. We can do that for the SS and for the HT models</li>
+</ol>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">trial.data2</span> <span class="kw">&lt;-</span> <span class="no">trial.data</span> <span class="co"># just use the same data as your second data set, for the sake of this example</span>
+
+<span class="no">comb.SSfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>, <span class="kw">comb</span><span class="kw">=</span><span class="fl">TRUE</span>,<span class="kw">data2</span><span class="kw">=</span><span class="no">trial.data2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">comb.SSfit</span>)
+
+<span class="no">comb.HTfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"HT"</span>, <span class="kw">comb</span><span class="kw">=</span><span class="fl">TRUE</span>,<span class="kw">data2</span><span class="kw">=</span><span class="no">trial.data2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">comb.HTfit</span>)</pre></body></html></div>
+<div id="we-can-also-do-this-using-two-other-data-sets-included-in-the-package" class="section level3">
+<h3 class="hasAnchor">
+<a href="#we-can-also-do-this-using-two-other-data-sets-included-in-the-package" class="anchor"></a>We can also do this using two other data sets included in the package:</h3>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">trial.data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"L1I1HancPac"</span>)
+<span class="no">trial.data2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"L1I1HancPev"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">comb.SSfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>, <span class="kw">comb</span><span class="kw">=</span><span class="fl">TRUE</span>,<span class="kw">data2</span><span class="kw">=</span><span class="no">trial.data2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">comb.SSfit</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">comb.HTfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"HT"</span>, <span class="kw">comb</span><span class="kw">=</span><span class="fl">TRUE</span>,<span class="kw">data2</span><span class="kw">=</span><span class="no">trial.data2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">comb.HTfit</span>)</pre></body></html></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Assume you have data from a competition assay and from a stability assay and you want to leverage the information in the competition assay to better estimate the cost. This package comes with two sample data sets to that effect, one is a stability assay, called data.compet and another called data.stabexp. These two data sets come from an Ancestral line, so cost is expected to be true cost. Check them out by typing:</li>
+</ol>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"compet"</span>)
+<span class="no">compet</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"stabexp"</span>)
+<span class="no">stabexp</span></pre></body></html></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">add.compet.fit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">stabexp</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>,<span class="kw">add.compet.data</span><span class="kw">=</span><span class="fl">TRUE</span>, <span class="kw">data2</span><span class="kw">=</span><span class="no">compet</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">add.compet.fit</span>)</pre></body></html></div>
+</div>
 </div>
   </div>
 
