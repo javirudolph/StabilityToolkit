@@ -126,13 +126,13 @@
 <p>and if you want to test this idea with the Horizontal Transfer (HT) model, just type</p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="no">comb.HTfit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">trial.data</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"HT"</span>, <span class="kw">comb</span><span class="kw">=</span><span class="fl">TRUE</span>,<span class="kw">data2</span><span class="kw">=</span><span class="no">trial.data2</span>)</pre></div>
 <p>Finally, here’s something else you may want to do. Assume you have data from a competition assay and from a stability assay and you want to leverage the information in the competition assay to better estimate the cost. This package comes with two sample data sets to that effect, one is a stability assay, called <code>data.compet</code> and another called <code>data.stabexp</code>. These two data sets come from an ancestral line, so cost is expected to be true cost. You can check out these two data sets by loading them:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">data.compet</span>)
-<span class="no">data.compet</span>
+<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">compet</span>)
+<span class="no">compet</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">data.stabexp</span>)
-<span class="no">data.stabexp</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">stabexp</span>)
+<span class="no">stabexp</span></pre></div>
 <p>Then, to jointly estimate the SS model parameters by using data from the competition and from the stability assay, just type</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="no">add.compet.fit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">data.stabexp</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>,<span class="kw">add.compet.data</span><span class="kw">=</span><span class="fl">TRUE</span>, <span class="kw">data2</span><span class="kw">=</span><span class="no">data.compet</span>)</pre></div>
+<div class="sourceCode" id="cb9"><pre class="r"><span class="no">add.compet.fit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dynamic.fit.html">dynamic.fit</a></span>(<span class="kw">data1</span><span class="kw">=</span><span class="no">stabexp</span>,<span class="kw">model</span><span class="kw">=</span><span class="st">"SS"</span>,<span class="kw">add.compet.data</span><span class="kw">=</span><span class="fl">TRUE</span>, <span class="kw">data2</span><span class="kw">=</span><span class="no">compet</span>)</pre></div>
 </div>
 </div>
   </div>
